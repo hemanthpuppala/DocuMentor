@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CRI - AI Research Assistant</title>
+    <link rel="stylesheet" href="/static/styles.css" /> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="top-panel">
+        <div class="container top-panel-container">
+            <a href="/" class="top-logo" aria-label="DocuMentor Home">Cognitive Research Hub</a>
+            <nav class="top-nav">
+                <button id="newSessionBtn" aria-label="New Chat Session">New Chat / Thread</button>
+                <button id="mockTestBtn" aria-label="Mock Test">📝 Mock Test</button>
+
+            </nav>
+            <div class="session-history-container" aria-label="Session History">
+                <h3>AI-powered Research Engine</h3>
+                <ul id="sessionHistoryList" class="session-history-list" role="list">
+                    </ul>
+            </div>
+        </div>
+    </header>
+
+    <main id="mainArea">
+        <section id="homepageSection" class="homepage-section">
+            <form id="queryForm" aria-label="Research Query Form">
+                <label for="queryInput" class="visually-hidden">Enter your research query</label>
+                <input type="text" id="queryInput" name="queryInput" placeholder="Enter your research question..." required autocomplete="off" spellcheck="false" />
+
+                <label for="fileInput" class="file-label" title="Upload research documents (pdf, txt, images - max 50MB each)">📎</label>
+                <input type="file" id="fileInput" name="fileInput" multiple accept=".pdf,.txt,.doc,.docx,.md,.png,.jpg,.jpeg" />
+
+                <button type="submit" id="submitBtn" aria-disabled="false">Send</button>
+            </form>
+        </section>
+
+        <section id="resultsSection" class="results-section hidden" aria-live="polite" aria-atomic="true">
+            <div class="results-header">
+                <h2>Research Summary</h2>
+                <button id="newQueryBtn" aria-label="Make a new query">New Query</button>
+            </div>
+
+            <article id="summaryContent" class="summary-content" tabindex="0">
+                </article>
+
+            <footer class="chat-bar-footer">
+                <form id="followupForm" aria-label="Follow-up question form">
+                    <input type="text" id="followupInput" name="followupInput" 
+                           placeholder="Ask a follow-up question..." 
+                           autocomplete="off" spellcheck="false" required />
+                    <button type="submit" id="followupSubmitBtn">Send</button>
+                </form>
+            </footer>
+        </section>
+
+        <!-- Replace the placeholder div with actual quiz content -->
+
+
+    </main>
+
+    <!-- Chat launcher -->
+<button id="chatIconBtn" class="chat-icon" aria-label="Open chat">
+    💬
+  </button>
+  
+  <!-- Chat panel -->
+  <div id="chatPanel" class="chat-panel hidden">
+    <div class="chat-header">
+      <h3>Assistant Chat</h3>
+      <!-- CLOSE BUTTON -->
+      <button id="closeChatBtn" aria-label="Close chat">&times;</button>
+    </div>
+  
+    <div id="chatMessages" class="chat-messages"></div>
+  
+    <form id="chatInputForm" class="chat-input-form">
+      <input id="chatInput" type="text" placeholder="Type your message…" autocomplete="off" />
+      <button id="chatSendBtn" type="submit">Send</button>
+    </form>
+  </div>
+ <!-- ─── MOCK-TEST SECTION (initially hidden) ─────────────────────────────── -->
+<section id="mockTestSection" class="hidden">
+    <div class="mock-test-container">
+        <header class="mock-test-header">
+            <h1>📝 Mock Test: Knowledge Assessment</h1>
+            <p class="test-description">
+                Answer the questions below – they're generated from the sources you just researched.
+            </p>
+        </header>
+
+        <!-- This is where the backend will inject the quiz -->
+        <main class="test-content">
+            <!-- Quiz will be injected here by JavaScript -->
+        </main>
+
+        <!-- Overlay shown while LLM evaluates -->
+        <div id="loadingOverlay" class="loading-overlay hidden">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <p>Evaluating your answers…</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ──────────────────────────────────────────────────────────────────────── -->
+
+
+    <script src="/static/script.js" defer></script> 
+
+</body>
+</html>
